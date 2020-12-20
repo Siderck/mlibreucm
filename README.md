@@ -26,6 +26,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 # Requeriments:
 -Laravel Framework 7.3.0 or similars.
+
 -CSS: Stylus, Bootstrap
 
 #  Screenshots:
