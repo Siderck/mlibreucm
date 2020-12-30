@@ -50,7 +50,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-mobile-alt"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::number('telefono', null, ['class' => 'form-control']) !!}
+            {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
         </div>
 
         <label for="direccion" class = "mtop16">Dirección:</label>
@@ -58,7 +58,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-map-marked-alt"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('password', null, ['class' => 'form-control']) !!}
+            {!! Form::text('direccion', null, ['class' => 'form-control']) !!}
         </div>
 
         <label for="contrasena" class = "mtop16">Contraseña:</label>
