@@ -21,10 +21,11 @@ class ConnectController extends Controller
             'name' => 'required',
             'rut' => 'required',
             'apellidos' => 'required',
-            'email' => 'required|email|unique:App\User,email ',
+            'email' => 'required|email|unique:App\usuarios,Correo ',
             'telefono' => 'required',
             'direccion' => 'required',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
+            'cpassword' => 'required|same:password'
         ];
 
         $validator = Validator::make($request->all(), $rules);
