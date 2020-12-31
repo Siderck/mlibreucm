@@ -69,6 +69,13 @@
             {!! Form::password('password', ['class' => 'form-control']) !!}
         </div>
 
+        <label for="ccontrasena" class = "mtop16">Confirmar Contraseña:</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-key"></i></div> {{-- Icono de eMail usando FontAwesome --}}
+            </div>
+            {!! Form::password('password', ['class' => 'form-control']) !!}
+        </div>
 
         {{ Form::submit('Registrarse', ['class' => 'btn btn-primary mtop16']) }}
         {!! Form::close() !!}
