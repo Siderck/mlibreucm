@@ -3,13 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
-use App\usuarios;
+use Validator, Auth;
+use App\users;
+use DB;
 
 class ConnectController extends Controller
 {
     public function getLogin(){
         return view('connect.login');
+    }
+
+    public function postLogin(Request $request){
+        $rules = [
+            'rut' => 'required',
+            'password' => 'required|min:8'
+        ];
+
+        $messages = [
+            'rut.required' => 'El campo Correo es requerido',
+            'password.required' => 'El campo Contraseña es requerido'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator -> fails()):
+            return back()->withErrors($validator) ->with('message','Se ha producido un error','typealert','danger');
+        else:
+
+
+            $rut = $request->input('rut');
+            $password = $request->input('password');
+
+            $users = DB::table('users')->select('contrasena')
+                ->where('rut', '=', $rut)
+                ->get();
+
+            if($password == $users[0]->contrasena):
+                return redirect('/');
+            else:
+                return back()->with('message','Los datos ingresados son erróneos','typealert','danger');
+            endif;
+
+        endif;
     }
 
     public function getRegister(){
@@ -22,7 +56,7 @@ class ConnectController extends Controller
             'name' => 'required',
             'rut' => 'required',
             'apellidos' => 'required',
-            'email' => 'required|email|unique:usuarios,Correo',
+            'email' => 'required|email|unique:users,Correo',
             'telefono' => 'required',
             'direccion' => 'required',
             'password' => 'required|min:8',
@@ -46,7 +80,7 @@ class ConnectController extends Controller
         if($validator -> fails()):
             return back()->withErrors($validator) ->with('message','Se ha producido un error','typealert','danger');
         else:
-            $user = new usuarios;
+            $user = new users;
             $user->Nombres = $request->input('name');
             $user->RUT = $request->input('rut');
             $user->Apellidos = $request->input('apellidos');
