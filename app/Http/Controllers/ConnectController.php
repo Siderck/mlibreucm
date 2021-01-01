@@ -32,7 +32,6 @@ class ConnectController extends Controller
 
             $rut = $request->input('rut');
             $password = $request->input('password');
-            $usuario = DB::select('select contrasena from users');
 
             $users = DB::table('users')->select('contrasena')
                 ->where('rut', '=', $rut)
