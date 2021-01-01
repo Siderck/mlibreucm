@@ -15,7 +15,8 @@ class UserController extends Controller
 
     public function getUsers(){
         $users = users::orderBy('rut','Desc')->get();
-        return view('admin.users.home');
+        $data = ['users' => $users];
+        return view('admin.users.home', $data);
     }
 
 }
