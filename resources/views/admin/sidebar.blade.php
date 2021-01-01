@@ -15,6 +15,8 @@
             </div>
 
             <div class="email">{{ Auth::users()->correo }}</div>
+
+            --}}
         </div>
     </div>
 
@@ -27,7 +29,7 @@
                 <a href="{{ url('/productos') }}"><i class="fas fa-box"></i> Dashboard</a>
             </li>
             <li>
-                <a href="{{ url('/users') }}"><i class="fas fa-users"></i>Dashboard</a>
+                <a href="{{ url('/admin/users') }}"><i class="fas fa-users"></i>Dashboard</a>
             </li>
         </ul>
     </div>
