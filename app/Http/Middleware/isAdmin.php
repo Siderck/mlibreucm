@@ -15,7 +15,9 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
+
         if (Auth:: users() -> tipousuario == "0"):
+      
             return $next($request);
         else:
             return redirect('/');
