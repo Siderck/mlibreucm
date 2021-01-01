@@ -68,7 +68,7 @@
                     </script>
                 </div>
                 </div>
-        @endif
+                @endif
 
         @section('content')
         @show

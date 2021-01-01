@@ -5,6 +5,8 @@
         </div>
         <div class="user">
             <span class="subtitle">Hola:</span>
+
+            {{--                                //ELIMINAR COMENTARIOS DESPUES
             <div class="name">
                 {{ Auth::user()->name }} {{ Auth::user()->lastname }}
                 <a href="{{ url('logout') }}" data-toggle="tooltip" data-placement="top" title="Salir">
@@ -12,6 +14,8 @@
                 </a>
             </div>
             <div class="email">{{ Auth::User()->correo }}</div>
+            --}}
+
         </div>
     </div>
 
