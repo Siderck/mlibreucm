@@ -3,13 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
+use Validator, Auth;
 use App\users;
+use DB;
 
 class ConnectController extends Controller
 {
     public function getLogin(){
         return view('connect.login');
+    }
+
+    public function postLogin(Request $request){
+        $rules = [
+            'rut' => 'required',
+            'password' => 'required|min:8'
+        ];
+
+        $messages = [
+            'rut.required' => 'El campo Correo es requerido',
+            'password.required' => 'El campo Contraseña es requerido'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator -> fails()):
+            return back()->withErrors($validator) ->with('message','Se ha producido un error','typealert','danger');
+        else:
+
+
+            $rut = $request->input('rut');
+            $password = $request->input('password');
+            $usuario = DB::select('select contrasena from users');
+
+            $users = DB::table('users')->select('contrasena')
+                ->where('rut', '=', $rut)
+                ->get();
+
+            if($password == $users[0]->contrasena):
+                return redirect('/');
+            else:
+                return back()->with('message','Los datos ingresados son erróneos','typealert','danger');
+            endif;
+
+        endif;
     }
 
     public function getRegister(){
