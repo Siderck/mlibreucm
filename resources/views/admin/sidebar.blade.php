@@ -11,7 +11,7 @@
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
-            <div class="email">{{ Auth::usuarios()->correo }}</div>
+            <div class="email">{{ Auth::users()->correo }}</div>
         </div>
     </div>
 

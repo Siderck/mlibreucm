@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
-use App\usuarios;
+use App\users;
 
 class ConnectController extends Controller
 {
@@ -22,7 +22,7 @@ class ConnectController extends Controller
             'name' => 'required',
             'rut' => 'required',
             'apellidos' => 'required',
-            'email' => 'required|email|unique:usuarios,Correo',
+            'email' => 'required|email|unique:users,Correo',
             'telefono' => 'required',
             'direccion' => 'required',
             'password' => 'required|min:8',
@@ -46,7 +46,7 @@ class ConnectController extends Controller
         if($validator -> fails()):
             return back()->withErrors($validator) ->with('message','Se ha producido un error','typealert','danger');
         else:
-            $user = new usuarios;
+            $user = new users;
             $user->Nombres = $request->input('name');
             $user->RUT = $request->input('rut');
             $user->Apellidos = $request->input('apellidos');
