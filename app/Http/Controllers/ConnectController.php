@@ -38,6 +38,7 @@ class ConnectController extends Controller
                 ->get();
 
             if($password == $users[0]->contrasena):
+                $_SESSION['val'] = "2"; #Cambia el tipo de sesion a usuario externo
                 return redirect('/');
             else:
                 return back()->with('message','Los datos ingresados son erróneos','typealert','danger');

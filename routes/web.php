@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+#Si no existe la variable $_SESSION se crea con valor 3 de visitante
+session_start();
+if (empty($_SESSION)):
+    $_SESSION['val'] = "3";
+endif;
+
 // Router Auth
 Route::get('/login', 'ConnectController@getLogin')->name('login');
 Route::post('/login', 'ConnectController@postLogin')->name('login');
