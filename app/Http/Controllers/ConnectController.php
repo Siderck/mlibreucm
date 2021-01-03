@@ -10,6 +10,11 @@ use DB;
 class ConnectController extends Controller
 {
     public function getLogin(){
+        #Si el usuario ya está logeado redirigir a la pagina principal
+        if($_SESSION['val']!=3){
+            return redirect('/');
+        }
+
         return view('connect.login');
     }
 
@@ -48,6 +53,11 @@ class ConnectController extends Controller
     }
 
     public function getRegister(){
+        #Si el usuario ya está registrado redirigir a la pagina principal
+        if($_SESSION['val']!=3){
+            return redirect('/');
+        }
+
         return view('connect.register');
     }
 
@@ -77,9 +87,10 @@ class ConnectController extends Controller
             'cpassword.same' => 'Las contraseñas no coinciden',
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if($validator -> fails()):
-            return back()->withErrors($validator) ->with('message','Se ha producido un error','typealert','danger');
+        $rut = $request->input('rut');
+        
+        if(DB::table('users')->where('rut', '=', $rut)->exists()):
+            return back()->with('message','El rut ingresado ya posee una cuenta asociada','typealert','danger');
         else:
             $user = new users;
             $user->Nombres = $request->input('name');
@@ -95,5 +106,15 @@ class ConnectController extends Controller
                 return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');
             endif;
         endif;
+    }
+
+    public function getLogout(){
+        #Si el usuario es un visitante redirigir a la pagina principal
+        if($_SESSION['val']==3){
+            return redirect('/');
+        }
+
+        $_SESSION['val'] = "3";
+        return redirect('/');
     }
 }
