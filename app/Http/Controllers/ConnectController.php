@@ -18,6 +18,7 @@ class ConnectController extends Controller
         return view('connect.login');
     }
 
+<<<<<<< Updated upstream
     public function postLogin(Request $request){
         $rules = [
             'rut' => 'required',
@@ -51,6 +52,9 @@ class ConnectController extends Controller
 
         endif;
     }
+=======
+
+>>>>>>> Stashed changes
 
     public function getRegister(){
         #Si el usuario ya está registrado redirigir a la pagina principal
@@ -75,7 +79,7 @@ class ConnectController extends Controller
         ];
 
         $messages = [
-            'name.required' => 'El campo Nombres es requerido',
+            'name.required' => 'El campo name es requerido',
             'rut.required' => 'El campo RUT es requerido',
             'apellidos.required' => 'El campo Apellidos es requerido',
             'email.required' => 'El campo Correo es requerido',
@@ -92,6 +96,7 @@ class ConnectController extends Controller
         if(DB::table('users')->where('rut', '=', $rut)->exists()):
             return back()->with('message','El rut ingresado ya posee una cuenta asociada','typealert','danger');
         else:
+<<<<<<< Updated upstream
             $user = new users;
             $user->Nombres = $request->input('name');
             $user->RUT = $request->input('rut');
@@ -101,6 +106,17 @@ class ConnectController extends Controller
             $user->Dirección = $request->input('direccion');
             $user->Contrasena = $request->input('password');
             $user->TipoUsuario = 2;
+=======
+            $user = new usuarios;
+            $user->name = $request->input('name');
+            $user->rut = $request->input('rut');
+            $user->apellidos = $request->input('apellidos');
+            $user->correo = $request->input('email');
+            $user->telefono = $request->input('telefono');
+            $user->dirección = $request->input('direccion');
+            $user->password = $request->input('password');
+            $user->tipousuario = 2;
+>>>>>>> Stashed changes
 
             if($user->save()):
                 return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');

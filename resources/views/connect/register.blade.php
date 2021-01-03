@@ -13,7 +13,7 @@
         {!! Form::open(['url' => '/register']) !!}
         <p class="text-center fs-3" >Completa tus datos</p>
 
-        <label for="name">Nombres:</label>
+        <label for="name">name:</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-user"></i></div> {{-- Icono de eMail usando FontAwesome --}}
