@@ -21,6 +21,20 @@ Route::get('/', function () {
 session_start();
 if (empty($_SESSION)):
     $_SESSION['val'] = "3";
+
+    #Como esto solo se ejecuta una vez, se crea un admin
+
+    DB::table('users')->insert([
+        'nombres' => 'Admin',
+        'rut' => '0',
+        'apellidos' => 'Admin',
+        'correo' => 'admin@alu.ucm.cl',
+        'telefono' => '995891123',
+        'direccion' => 'Talca',
+        'contrasena' => 'admin',
+        'tipousuario' => '0'
+    ]);
+
 endif;
 
 // Router Auth
