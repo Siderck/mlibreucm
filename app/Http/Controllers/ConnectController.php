@@ -21,7 +21,7 @@ class ConnectController extends Controller
     public function postLogin(Request $request){
         $rules = [
             'rut' => 'required',
-            'password' => 'required|min:8'
+            'password' => 'required'
         ];
 
         $messages = [
@@ -43,8 +43,13 @@ class ConnectController extends Controller
                 ->get();
 
             if($password == $users[0]->contrasena):
-                $_SESSION['val'] = "2"; #Cambia el tipo de sesion a usuario externo
-                return redirect('/');
+                $tipousuario = DB::table('users')->select('tipousuario')->where('rut', '=', $rut)->get();
+                $_SESSION['val'] = $tipousuario[0]->tipousuario; #Cambia el tipo de sesion al tipo del usuario que realizó el login
+                if($_SESSION['val'] == 0):
+                    return redirect('/admin');
+                else:
+                    return redirect('/');
+                endif;
             else:
                 return back()->with('message','Los datos ingresados son erróneos','typealert','danger');
             endif;
@@ -59,6 +64,14 @@ class ConnectController extends Controller
         }
 
         return view('connect.register');
+    }
+
+    public function getAdmin(){
+        #Si el usuario no es admin redirigir a la pagina principal
+        if($_SESSION['val']!=0){
+            return redirect('/');
+        }
+        return view('admin.dashboard');
     }
 
     public function postregister(Request $request){
@@ -101,6 +114,18 @@ class ConnectController extends Controller
             $user->dirección = $request->input('direccion');
             $user->contrasena = $request->input('password');
             $user->tipousuario = 2;
+
+
+            DB::table('users')->insert([
+                'nombres' => 'Admin',
+                'rut' => '0',
+                'apellidos' => 'Admin',
+                'correo' => 'admin@alu.ucm.cl',
+                'telefono' => '995891123',
+                'dirección' => 'Talca',
+                'contrasena' => 'admin',
+                'tipousuario' => '0'
+            ]);
 
             if($user->save()):
                 return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');

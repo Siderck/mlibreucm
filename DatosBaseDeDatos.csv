@@ -1,0 +1,7 @@
+nombres;rut;apellidos;correo;telefono;dirección;contrasena;carrera;tipousuario;remember_token;created_at;updated_at
+admin;0;admin;admin@alu.ucm.cl;99999999;Talca;admin;\N;0;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
+Bryan;20.167.123-5;Mora;bryan.mora@alu.ucm.cl;936471782;Talca;12345;Ingenieria Civil Informatica;1;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
+Ivan;20.007.902-7;Monroy;ivan.monroy@outlook.com;95891123;Talca;12345;\N;2;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
+Loreto;14.554.320-7;Lopez;loreto.lopez@gmail.com;937649182;Villa Prat;12345;\N;2;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
+Francisco;18.123.123-5;Muñoz;francisco.munoz@alu.ucm.cl;912783467;San Clemente;12345;Medicina;1;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
+Catalina;22.156.892-4;Ibarra;catalina.ibarra@gmail.com;912894635;Pelarco;12345;\N;2;\N;2021/01/03 03:03:19;2021/01/03 03:03:19
