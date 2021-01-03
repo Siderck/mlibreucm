@@ -43,7 +43,7 @@
                     <nav aria-label="breadcrumb shadow">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ url('/admin') }}"<i class="fas fa-home"></i> Dashboard></a>
+                                <a href="{{ url('/admin') }}"<i class="fas fa-home"></i> Dashboard</a>
                             </li>
                             @section('breadcrumb')
                             @show
