@@ -19,6 +19,8 @@ class users extends Authenticatable
         'name', 'rut', 'apellidos', 'email','telefono','direccion','password'
     ];
 
+    protected $primaryKey = 'rut';
+
     /**
      * The attributes that should be hidden for arrays.
      *
