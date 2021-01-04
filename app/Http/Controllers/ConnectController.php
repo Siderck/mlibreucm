@@ -115,18 +115,6 @@ class ConnectController extends Controller
             $user->contrasena = $request->input('password');
             $user->tipousuario = 2;
 
-
-            DB::table('users')->insert([
-                'nombres' => 'Admin',
-                'rut' => '0',
-                'apellidos' => 'Admin',
-                'correo' => 'admin@alu.ucm.cl',
-                'telefono' => '995891123',
-                'dirección' => 'Talca',
-                'contrasena' => 'admin',
-                'tipousuario' => '0'
-            ]);
-
             if($user->save()):
                 return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');
             endif;

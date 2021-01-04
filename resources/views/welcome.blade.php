@@ -67,15 +67,16 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    @if ($_SESSION['val'] == "0")
+                        <a href="{{ url('/admin') }}">Admin</a>
+                    @endif
                     @if ($_SESSION['val'] != "3")
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                        <a href="{{ url('/logout') }}">Cerrar Sesión</a>
+                    @endif
+                    @if ($_SESSION['val'] == "3")
+                        <a href="{{ route('login') }}">Iniciar Sesión</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
+                    @endif
                 </div>
             @endif
 

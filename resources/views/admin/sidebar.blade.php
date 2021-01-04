@@ -23,7 +23,10 @@
     <div class="main">
         <ul>
             <li>
-                <a href="{{ url('/admin') }}"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ url('/') }}"><i class="fas fa-home"></i> Inicio</a>
+            </li>
+            <li>
+                <a href="{{ url('/admin') }}"><i class="fas fa-home"></i> Dashboard</a>
             </li>
             <li>
                 <a href="{{ url('/admin/products') }}"><i class="fas fa-box"></i> Productos</a>
@@ -31,6 +34,10 @@
             <li>
                 <a href="{{ url('/admin/users') }}"><i class="fas fa-users"></i>Usuarios</a>
             </li>
+            <li>
+                <a href="{{ url('/logout') }}"><i class="fas fa-users"></i>Cerrar Sesión</a>
+            </li>
+        </ul>
         </ul>
     </div>
 </div>
