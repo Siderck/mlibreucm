@@ -30,6 +30,7 @@ Route::get('/register', 'ConnectController@getRegister')->name('register');
 Route::post('/register', 'ConnectController@postRegister')->name('register');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
+Route::get('/admin', 'ConnectController@getAdmin')->name('admin');
 
 
 
