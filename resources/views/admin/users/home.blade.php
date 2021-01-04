@@ -42,6 +42,7 @@
                 <tbody>
                     @foreach($users as $user)
                     <tr>
+
                         @if ($user->tipousuario != 0)
                             <td>{{ $user->rut }}</td>
                             <td>{{ $user->nombres }}</td>
@@ -66,6 +67,7 @@
                                 </div>
                             </td>
                         @endif
+
                     </tr>
                     @endforeach
                 </tbody>

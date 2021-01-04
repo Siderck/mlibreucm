@@ -32,7 +32,10 @@
                 <a href="{{ url('/admin/products') }}"><i class="fas fa-box"></i> Productos</a>
             </li>
             <li>
-                <a href="{{ url('/admin/users') }}"><i class="fas fa-users"></i>Usuarios</a>
+                <a href="{{ url('/admin/users') }}" class ="lk-user_list lk-user_edit"><i class="fas fa-users"></i>Usuarios</a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/users/create') }}" class ="lk-user_list lk-user_edit"><i class="fas fa-users"></i>Crear Usuarios</a>
             </li>
             <li>
                 <a href="{{ url('/logout') }}"><i class="fas fa-users"></i>Cerrar Sesión</a>
