@@ -42,28 +42,30 @@
                 <tbody>
                     @foreach($users as $user)
                     <tr>
-                        <td>{{ $user->rut }}</td>
-                        <td>{{ $user->nombres }}</td>
-                        <td>{{ $user->apellidos }}</td>
-                        <td>
-                            @if ($user->tipousuario === 1)
-                                Usuario Interno
-                            @else
-                                Usuario Externo
-                            @endif
-                        </td>
-                        <td>
-                            <div class="opts">
-                            @if ($user->tipousuario === 2)
-                                <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            @endif
-                            </div>
-                        </td>
+                        @if ($user->tipousuario != 0)
+                            <td>{{ $user->rut }}</td>
+                            <td>{{ $user->nombres }}</td>
+                            <td>{{ $user->apellidos }}</td>
+                            <td>
+                                @if ($user->tipousuario === 1)
+                                    Usuario Interno
+                                @else
+                                    Usuario Externo
+                                @endif
+                            </td>
+                            <td>
+                                <div class="opts">
+                                @if ($user->tipousuario === 2)
+                                    <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                @endif
+                                </div>
+                            </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
