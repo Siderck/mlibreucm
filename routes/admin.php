@@ -5,6 +5,9 @@ Route::prefix('/admin')->group(function(){
 
     //Modulo usuarios
     Route::get('/users', 'Admin\UserController@getUsers');
+    Route::get('/users/create', 'ConnectController@getRegister')->name('register');
+    //Route::get('/register', 'ConnectController@getRegister')->name('register');
+
     Route::delete('/delete/{rut}', 'Admin\UserController@Delete')->name("user.delete");
     Route::get('/user/{rut}/edit', 'Admin\UserController@getUserEdit');
     Route::patch('users/{rut}/update',  ['as' => 'users.update', 'uses' => 'Admin\UserController@update']);
