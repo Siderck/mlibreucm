@@ -31,6 +31,9 @@
             <li>
                 <a href="{{ url('/admin/users') }}" class ="lk-user_list lk-user_edit"><i class="fas fa-users"></i>Usuarios</a>
             </li>
+            <li>
+                <a href="{{ url('/admin/users/create') }}" class ="lk-user_list lk-user_edit"><i class="fas fa-users"></i>Crear Usuarios</a>
+            </li>
         </ul>
     </div>
 </div>
