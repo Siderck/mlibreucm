@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\users;
+use Redirect;
 use DB;
 use Auth;
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
         $users = users::orderBy('rut','Desc')->get();
         $data = ['users' => $users];
         DB::table('users')->where('rut', $rut)->delete();
-        return view('admin.users.home', $data);
+        return Redirect::back()->with('message','Usuario eliminado con éxito');
     }
 
 
