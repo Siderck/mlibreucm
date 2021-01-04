@@ -42,9 +42,12 @@
                             <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="{{ url('admin/user/'.$user->rut.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
+                            <form action="{{ route('user.delete', [$user->rut]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                              </form>
+
                             </div>
                         </td>
                     </tr>
