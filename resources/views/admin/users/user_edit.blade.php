@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
-    <a href="{{ url('admin/users') }}"><i class="fas fa-users"></i> Usuarios</a>
+    <a href="{{ url('admin/users/user_edit') }}"><i class="fas fa-users"></i> Usuarios</a>
 </li>
 @endsection
 
@@ -24,18 +24,18 @@
                             @endforeach
                         @endif
 
-                        {!! Form::model($u, ['route' => ['admin.user.{rut}'], 'method' => 'POST']) !!}
+                        {!! Form::model([$u, 'route' => ['user.update'.$user->rut], 'method' => 'POST']) !!}
                             <div class="form-group row">
-                                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                <label for="name" class="col-sm-2 col-form-label">Nombres</label>
                                 <div class="col-sm-10">
-                                    {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
+                                    {!! Form::text('name', null, ['class' => 'form-control', 'rut' => 'name']) !!}
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                <label for="email" class="col-sm-2 col-form-label">Correo</label>
                                 <div class="col-sm-10">
-                                    {!! Form::text('email', null, ['class' => 'form-control', 'id' => 'email']) !!}
+                                    {!! Form::text('email', null, ['class' => 'form-control', 'rut' => 'email']) !!}
                                 </div>
                             </div>
 
