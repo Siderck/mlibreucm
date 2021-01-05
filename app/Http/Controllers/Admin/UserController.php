@@ -22,7 +22,6 @@ class UserController extends Controller
     public function getUserEdit($rut, Request $request){
         $u = users::findOrFail($rut);
         $data = ['u' => $u];
-
         return view('admin.users.user_edit', $data);
     }
 

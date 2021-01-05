@@ -45,7 +45,7 @@
                             <form action="{{ route('user.delete', [$user->rut]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-danger" type="submit">Delete</button>
+                                <button class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar a este usuario?')" type="submit">Delete</button>
                               </form>
 
                             </div>
