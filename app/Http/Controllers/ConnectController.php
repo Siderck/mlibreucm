@@ -129,7 +129,7 @@ class ConnectController extends Controller
             'telefono' => 'required',
             'direccion' => 'required',
             'password' => 'required|min:8',
-            'cpassword' => 'required|min:8'
+            'cpassword' => 'required|same:password'
         ];
 
         $messages = [
