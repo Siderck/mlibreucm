@@ -11,8 +11,11 @@
     </div>
     <div class="inside">
         {!! Form::open(['url' => '/register']) !!}
-        <p class="text-center fs-3" >Completa tus datos</p>
-
+        @if ($_SESSION['val'] != "0")
+            <p class="text-center fs-3" >Completa tus datos</p>
+        @else
+            <p class="text-center fs-3" >Registrar usuario</p>
+        @endif
         <label for="name">Nombres:</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -77,8 +80,13 @@
             {!! Form::password('cpassword', ['class' => 'form-control', 'required']) !!}
         </div>
 
-        {{ Form::submit('Registrarse', ['class' => 'btn btn-primary mtop16']) }}
-        {!! Form::close() !!}
+        @if ($_SESSION['val'] != "0")
+            {{ Form::submit('Registrarse', ['class' => 'btn btn-primary mtop16']) }}
+            {!! Form::close() !!}
+        @else
+        {{ Form::submit('Registrar', ['class' => 'btn btn-primary mtop16']) }}
+            {!! Form::close() !!}
+        @endif
 
         @if(Session::has('message'))
             <div class = "container">
@@ -99,9 +107,15 @@
             </div>
         @endif
 
-        <div class="footer mtop16">
-            <a href="{{ url('/login') }}" class="btn btn-secondary">Ya tengo una cuenta, Ingresar</a>
-        </div>
+        @if ($_SESSION['val'] != "0")
+            <div class="footer mtop16">
+                <a href="{{ url('/login') }}" class="btn btn-secondary">Ya tengo una cuenta, Ingresar</a>
+            </div>
+        @else
+            <div class="footer mtop16">
+                <a href="{{ url('/admin') }}" class="btn btn-secondary">Volver al menú de administrador</a>
+            </div>
+        @endif
     </div>
 
 </div>

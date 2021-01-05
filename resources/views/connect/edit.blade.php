@@ -1,6 +1,13 @@
 @extends('connect.master')
 
-@section('title', 'Editar Datos')
+@section('title', 'Editar Usuarios')
+
+@section('breadcrumb')
+<li class="breadcrumb-item">
+    <a href="{{ url('admin/users') }}"><i class="fas fa-users"></i> Usuarios</a>
+</li>
+@endsection
+
 
 @section('content')
 <div class = "box box_register shadow">
@@ -18,7 +25,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px" ><i class="fas fa-user"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('name', $u->nombres, ['class' => 'form-control', 'required']) !!}
         </div>
 
         <label for="rut" class = "mtop16">RUT:</label>
@@ -26,7 +33,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-address-card"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('rut', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('rut', $u->rut, ['class' => 'form-control', 'required']) !!}
         </div>
 
         <label for="apellidos" class = "mtop16">Apellidos:</label>
@@ -34,7 +41,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-user-tag"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('apellidos', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('apellidos', $u->apellidos, ['class' => 'form-control', 'required']) !!}
         </div>
 
         <label for="email" class = "mtop16">Correo:</label>
@@ -42,7 +49,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="far fa-envelope"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::email('email', $u->correo, ['class' => 'form-control', 'required']) !!}
         </div>
 
         <label for="telefono" class = "mtop16">Teléfono:</label>
@@ -50,7 +57,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-mobile-alt"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('telefono', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('telefono', $u->telefono, ['class' => 'form-control', 'required']) !!}
         </div>
 
         <label for="direccion" class = "mtop16">Dirección:</label>
@@ -58,7 +65,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text" style = "font-size: 24px"><i class="fas fa-map-marked-alt"></i></div> {{-- Icono de eMail usando FontAwesome --}}
             </div>
-            {!! Form::text('direccion', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('direccion', $u->dirección, ['class' => 'form-control', 'required']) !!}
         </div>
         @if(Session::has('message'))
             <div class = "container">
@@ -81,8 +88,7 @@
     {{ Form::submit('Modificar Datos', ['class' => 'btn btn-primary mtop16']) }}
     {!! Form::close() !!}
     <div class="footer mtop16">
-            <a href="{{ url('/') }}" class="btn btn-secondary">Volver al Inicio</a>
-        </div>
+        <a href="{{ url('/') }}" class="btn btn-secondary">Volver al menú de inicio</a>
     </div>
 
 </div>

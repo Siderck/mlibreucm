@@ -24,7 +24,10 @@ class ConnectController extends Controller
             return redirect('/');
         }
 
-        return view('connect.edit');
+        $u = users::findOrFail($_SESSION['rut']);
+        $data = ['u' => $u];
+
+        return view('connect.edit', $data);
     }
 
     public function postEdit(Request $request){
@@ -100,8 +103,8 @@ class ConnectController extends Controller
     }
 
     public function getRegister(){
-        #Si el usuario ya está registrado redirigir a la pagina principal
-        if($_SESSION['val']!=3){
+        #Si el usuario ya está registrado redirigir a la pagina principal, admin puede crear registrar usuarios
+        if($_SESSION['val']== 1 or $_SESSION['val']== 2){
             return redirect('/');
         }
 
@@ -158,7 +161,11 @@ class ConnectController extends Controller
             $user->tipousuario = 2;
 
             if($user->save()):
-                return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');
+                if($_SESSION['val']!=0):
+                    return redirect('/login')->with('message', 'El usuario se ha registrado con éxito')->with('typealert','success');
+                else:
+                    return redirect('/admin/users');
+                endif;
             endif;
         endif;
     }

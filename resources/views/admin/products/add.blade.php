@@ -60,18 +60,11 @@
 
 
 
-                    <div class="col-md-3 mtop16">
-                        <label for="name">Categoría:</label>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                              Seleccione una categoría
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Tecnología</a>
-                              <a class="dropdown-item" href="#">Hogar</a>
-                              <a class="dropdown-item" href="#">Deportes</a>
-                            </div>
-                          </div>
+                    <div class="row mtop16">
+                        <div class="col-md-32">
+                            <label for="content">Categoria</label>
+                            {!! Form::text('categoria', null, ['class' => 'form-control']) !!}
+                        </div>
                     </div>
 
 
@@ -91,24 +84,17 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <div class="row mtop16">
-                    <div class="col-md-3"></div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    Stock:
-                                </span>
+            <div class="row mtop16">
+                        <div class="col-md-32">
+                            <label for="content">Stock</label>
+                            {!! Form::text('stock', null, ['class' => 'form-control']) !!}
                         </div>
-                        {!! Form::number('price', null, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any']) !!}
-
                     </div>
-                </div>
-            </div>
 
             <div class="row mtop16">
             </div>
 
+            {{ Form::submit('Publicar', ['class' => 'btn btn-primary mtop16']) }}
             {!! Form::close() !!}
         </div>
     </div>

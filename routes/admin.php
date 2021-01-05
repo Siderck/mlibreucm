@@ -9,12 +9,12 @@ Route::prefix('/admin')->group(function(){
     //Route::get('/register', 'ConnectController@getRegister')->name('register');
 
     Route::delete('/delete/{rut}', 'Admin\UserController@Delete')->name("user.delete");
-    Route::get('/user/{rut}/edit', 'Admin\UserController@getUserEdit');
-    Route::patch('users/{rut}/update',  ['as' => 'users.update', 'uses' => 'Admin\UserController@update']);
-
+    Route::get('/user/{rut}/edit', 'Admin\UserController@getUserEdit')->name('edit_admin');
+    Route::post('/user/{rut}/edit', 'Admin\UserController@postUserEdit')->name('edit_admin');
 
     // Modulo Productos
     Route::get('/products','Admin\ProductController@getHome');
     Route::get('/product/add','Admin\ProductController@getProductAdd');
+    Route::post('/product/add','Admin\ProductController@postProductAdd');
 });
 

@@ -9,9 +9,7 @@
             <h2 class="title"><i class="fas fa-home"></i> Dashboard</h2>
         </div>
         <div class="inside">
-            ksDKsakdskadksadksa
-            sadksakdsakd
-            skadksadksadksa
+            Bienvenido al panel de administrador de Mercadolibre UCM
         </div>
     </div>
 </div>
