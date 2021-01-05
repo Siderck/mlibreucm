@@ -71,6 +71,7 @@
                         <a href="{{ url('/admin') }}">Admin</a>
                     @endif
                     @if ($_SESSION['val'] != "3")
+                        <a href="{{ url('/edit') }}">Editar Perfil</a>
                         <a href="{{ url('/logout') }}">Cerrar Sesión</a>
                     @endif
                     @if ($_SESSION['val'] == "3")

@@ -18,6 +18,47 @@ class ConnectController extends Controller
         return view('connect.login');
     }
 
+    public function getEdit(){
+        #Si el usuario ya está logeado redirigir a la pagina principal
+        if($_SESSION['val']==3){
+            return redirect('/');
+        }
+
+        return view('connect.edit');
+    }
+
+    public function postEdit(Request $request){
+        $rules = [
+            'name' => 'required',
+            'rut' => 'required',
+            'apellidos' => 'required',
+            'email' => 'required|email|unique:users,Correo',
+            'telefono' => 'required',
+            'direccion' => 'required'
+        ];
+
+        $messages = [
+            'name.required' => 'El campo name es requerido',
+            'rut.required' => 'El campo RUT es requerido',
+            'apellidos.required' => 'El campo Apellidos es requerido',
+            'email.required' => 'El campo Correo es requerido',
+            'telefono.required' => 'El campo Teléfono es requerido',
+            'direccion.required' => 'El campo Dirección es requerido'
+        ];
+
+        $user= users::find($_SESSION['rut']);
+        $user->nombres = $request->input('name');
+        $user->rut = $request->input('rut');
+        $user->apellidos = $request->input('apellidos');
+        $user->correo = $request->input('email');
+        $user->telefono = $request->input('telefono');
+        $user->dirección = $request->input('direccion');
+        $user->save();
+        $_SESSION['rut'] = $request->input('rut');
+        return back()->with('message','Los datos fueron modificados exitosamente','typealert','success');
+
+    }
+
     public function postLogin(Request $request){
         $rules = [
             'rut' => 'required',
@@ -45,6 +86,7 @@ class ConnectController extends Controller
             if($password == $users[0]->contrasena):
                 $tipousuario = DB::table('users')->select('tipousuario')->where('rut', '=', $rut)->get();
                 $_SESSION['val'] = $tipousuario[0]->tipousuario; #Cambia el tipo de sesion al tipo del usuario que realizó el login
+                $_SESSION['rut'] = $rut;
                 if($_SESSION['val'] == 0):
                     return redirect('/admin');
                 else:
